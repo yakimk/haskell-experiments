@@ -13,4 +13,16 @@ main = do
     print $ solve ns ms
 
 solve :: [Int] -> [Int] -> Int
-solve = undefined
+solve ns ms =length 
+    $ filter (\x -> mgcd `mod` x ==0)
+    $ takeWhile (<= mgcd) 
+    $ map (nlcm * ) [1..]
+
+    where 
+        nlcm = fold lcm ns
+        mgcd = fold gcd ms
+
+fold :: (a -> a -> a) -> [a] -> a
+fold f [] = error "Empty list in fold."
+fold f [x] = x
+fold f (x:xs) = f x $ fold f xs

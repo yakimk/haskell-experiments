@@ -7,3 +7,6 @@ getMiddle s
 main = do
     s <- getLine
     putStrLn (getMiddle s)
+
+
+

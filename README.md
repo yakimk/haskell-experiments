@@ -1,2 +1,2 @@
-# vscode-haskell-config
-# haskell-experiments
+# Haskell experiments
+Some Haskell explorations and exercises.
