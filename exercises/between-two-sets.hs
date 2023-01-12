@@ -1,5 +1,6 @@
 -- https://www.hackerrank.com/challenges/between-two-sets/problem
 
+
 readIntList :: IO [Int]
 readIntList = do
     line <- getLine
