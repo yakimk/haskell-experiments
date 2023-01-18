@@ -1,4 +1,4 @@
--- https://www.hackerrank.com/challenges/kangaroo/problem -
+-- https://www.hackerrank.com/challenges/kangaroo/problem 
 
 main :: IO ()
 main = interact $ solve . map read . words 
