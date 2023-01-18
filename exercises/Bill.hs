@@ -1,4 +1,4 @@
-getLine' :: Read a => IO a
+getLine' :: IO Int
 getLine' = do
     l <- getLine
     return $ last $ map read $ words l  
@@ -10,7 +10,7 @@ main = do
     price <- getList
     putStrLn $ maybe "Bon Appetit" show $ solve ((k:food) ++ price)
 
-getList :: Read a => IO[a]
+getList :: IO[Int]
 getList = do
     l <- getLine
     return $ map read $ words l
