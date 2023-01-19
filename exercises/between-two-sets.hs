@@ -14,10 +14,7 @@ main = do
     print $ solve ns ms
 
 solve :: [Int] -> [Int] -> Int
-solve ns ms =length 
-    $ filter (\x -> mgcd `mod` x ==0)
-    $ takeWhile (<= mgcd) 
-    $ map (nlcm * ) [1..]
+solve ns ms =length $ filter (\x -> mgcd `mod` x ==0)$ takeWhile (<= mgcd) $ map (nlcm * ) [1..]
 
     where 
         nlcm = fold lcm ns

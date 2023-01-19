@@ -1,7 +1,7 @@
 getLine' :: IO Int
 getLine' = do
     l <- getLine
-    return $ last $ map read $ words l  
+    return $ last . map read . words l  
 
 main :: IO()
 main = do
@@ -13,7 +13,7 @@ main = do
 getList :: IO[Int]
 getList = do
     l <- getLine
-    return $ map read $ words l
+    return $ map read . words l
 
 remove :: Read a => Int -> [a] -> [a]
 remove x [] = []
