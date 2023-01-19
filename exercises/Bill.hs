@@ -1,7 +1,7 @@
 getLine' :: IO Int
 getLine' = do
     l <- getLine
-    return $ last . map read . words l  
+    return $ last . map read . words l
 
 main :: IO()
 main = do
@@ -19,7 +19,7 @@ remove :: Read a => Int -> [a] -> [a]
 remove x [] = []
 remove x xs  = left ++ tail right
     where
-        (left, right) = splitAt x xs 
+        (left, right) = splitAt x xs
 
 solve :: [Int] -> Maybe Int
 solve xs
