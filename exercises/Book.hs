@@ -4,9 +4,9 @@ main :: IO()
 main = interact $  show . solve . map read . words
 
 solve :: [Int] -> Int
-solve list = min res $ (n-p+m)  `div` 2
+solve list = min res resn
     where 
         n = head list
         p = last list
         res =  p `div` 2
-        m = p `mod` 2
+        resn = (n `div` 2) - res 
