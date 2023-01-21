@@ -8,9 +8,9 @@ pp :: MS -> IO()
 pp = putStrLn . unlines . map (unwords . map show) 
 
 ref :: MS
-ref = [[7, 6, 5],
-    [7, 2, 8],
-    [5, 3, 4]]
+ref = [ [2, 4, 9],
+        [6, 8, 1],
+        [7, 3, 5]]
 
 magic :: MS
 magic = [[8,1,6],
@@ -47,3 +47,26 @@ main = do
     m <- getList
     k <- getList
     print $ solve [n,m,k]
+
+same :: [Int] -> Bool
+same [] = True
+same [x] = True
+same (x:xs) = x== head xs && same xs
+
+getLineInt :: IO Int
+getLineInt = read <$> getLine
+
+
+chop :: Int -> [Int] -> [[Int]]
+chop _ [] = []
+chop n xs = take n xs : chop n (drop n xs)
+
+isMagic :: MS -> Bool
+isMagic ms = (==1) $ length $ nub $ concat [diags, colls, rows] 
+    where 
+        rows = map sum ms
+        colls = map sum $ transpose ms
+        diags = [sum $ zipWith (curry (uncurry (!!))) ms [0 .. ],sum $ zipWith (curry (uncurry (!!))) (rotate ms) [0 .. ]]
+
+genAllSquares :: Int -> Int -> [MS]
+genAllSquares n r = filter isMagic $ map (chop r) $ permutations [1..n]
