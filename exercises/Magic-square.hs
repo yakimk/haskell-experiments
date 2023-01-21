@@ -7,8 +7,6 @@ type MS = [[Int]]
 pp :: MS -> IO()
 pp = putStrLn . unlines . map (unwords . map show) 
 
-
-
 ref :: MS
 ref = [[7, 6, 5],
     [7, 2, 8],
@@ -26,8 +24,8 @@ refl :: MS -> MS
 refl = transpose . rotate
 
 
-transforms ::  MS -> [MS]
-transforms ms = [ applyN m refl $ applyN n rotate ms | n <- [0..3], m <- [0,1]]
+transforms ::  [MS]
+transforms = take 4 (iterate rotate magic) ++ take 4 (iterate rotate $ refl magic)
 
 listDif :: [Int] -> [Int] -> Int
 listDif [] [] = 0
@@ -37,13 +35,8 @@ cost :: MS -> MS -> Int
 cost [] [] = 0
 cost (x:xs) (y:ys) = listDif x y + cost xs ys
 
-solve :: MS -> [Int]
-solve ms = [cost ms ref| ref <- transforms magic]
-
-applyN :: Read a => Int -> (a -> a) -> a -> a
-applyN 0 f x = x
-applyN 1 f x = f x
-applyN n f x = applyN (n-1) f x
+solve :: MS -> Int
+solve ms = minimum [cost ms ref| ref <- transforms]
 
 getList :: IO[Int]
 getList = map read . words <$> getLine
