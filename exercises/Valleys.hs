@@ -1,4 +1,5 @@
 -- https://www.hackerrank.com/challenges/counting-valleys/problem
+
 import           Data.List
 
 parse :: Char -> Int
