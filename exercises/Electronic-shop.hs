@@ -2,10 +2,10 @@
 
 main :: IO()
 main = do
-    b <- getList
+    [b, _ , _] <- getList
     k <- getList
     u <- getList
-    print $ solve (head b) k u 
+    print $ solve b k u 
 
 
 solve :: Int -> [Int] -> [Int] -> Int
